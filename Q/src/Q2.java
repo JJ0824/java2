@@ -70,7 +70,7 @@ class Triangle extends Shape {
 // 원 클래스
 class Circle extends Shape implements Resizable {
     private double radius;
-    private static final double PI = 3.1415926535897932384626433832795028841971693993;
+    private static final double PI = Math.PI;
 
     public Circle(double radius, String color) {
         super(color);
@@ -89,7 +89,7 @@ class Circle extends Shape implements Resizable {
 
     @Override
     public double getPerimeter() {
-        return 2 * PI * radius;
+        return 2 * radius;
     }
 }
 
@@ -104,7 +104,7 @@ class Square extends Shape implements Resizable {
 
     @Override
     public void resize(double factor) {
-        this.side *= factor;
+        this.side = factor;
     }
 
     @Override
