@@ -7,50 +7,67 @@ abstract class Character {
         this.name = name;
         this.hp = hp;
     }
-    public void takeDamage(int amount) {
+    public final void takeDamage(int amount) {
         hp = hp - amount; // 공격을 받으면 받은 공격량만큼을 생명에서 뺀다
         System.out.println(name + "은 " + amount + "만큼의 공격을 받음." +
                 " 남은 생명은 " + hp);
     }
-    abstract void doAction(); // 추상메서드
+    public abstract void doAction(); // 추상메서드
 }
 
 // 기능 인터페이스 : 근접공격
 interface MeleeAttacker {
-    void meleeAttack(Character target); // 추상메서드
+    void meleeAttack(Character target, int amount); // 추상메서드
 }
 
 // 기능 인터페이스 : 마법공격
 interface MagicCaster {
-    void castSpell(Character target); // 추상메서드
+    void castSpell(Character target, int amount); // 추상메서드
 }
 
 // 전사
-class Warrior extends Character {
+class Warrior extends Character implements MeleeAttacker {
     public Warrior(String name, int hp) {
         super(name, hp);
     }
 
     @Override
-    void doAction() {
-        System.out.println("전사는 근접 공격");
+    public void doAction() {
+        System.out.println("전사의 근접 공격");
+    }
+
+    @Override
+    public void meleeAttack(Character target, int amount) {
+        System.out.println(name + "가 " + target.name + "를 공격");
+        target.takeDamage(amount);
     }
 }
 
 // 마법사
-class Mage extends Character {
+class Mage extends Character implements MagicCaster {
     public Mage(String name, int hp) {
         super(name, hp);
     }
 
     @Override
-    void doAction() {
-        System.out.println("마법사는 마법 공격");
+    public void doAction() {
+        System.out.println("마법사의 마법 공격");
+    }
+
+    @Override
+    public void castSpell(Character target, int amount) {
+        System.out.println(name + "가 " + target.name + "를 공격");
+        target.takeDamage(amount);
     }
 }
 
 public class Example2 {
     public static void main(String[] args) {
-
+        Character a = new Warrior("전사A", 100);
+        Character b = new Mage("마법사B", 80);
+        a.doAction();
+        ((MeleeAttacker)a).meleeAttack(b, 20);
+        b.doAction();
+        ((MagicCaster)b).castSpell(a, 10);
     }
 }

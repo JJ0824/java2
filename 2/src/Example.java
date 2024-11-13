@@ -68,15 +68,15 @@ class Laptop extends Device implements Wifi, Bluetooth{
 }
 public class Example {
     public static void main(String[] args) {
-        Phone phone = new Phone("삼성", "갤럭시 S24");
+        Device phone = new Phone("삼성", "갤럭시 S24");
         Device laptop = new Laptop("Apple", "MacBook Pro");
         // 휴대폰
         phone.powerOn();
         phone.doFunction();
         // 동적바인딩이 부모클래스인 Device로 되어있으므로
         // connectToWifi를 호출하기 위해 타입 변환이 필요함
-        phone.connectToWifi();
-        phone.connectToBluetooth();
+        ((Wifi)phone).connectToWifi();
+        ((Bluetooth)phone).connectToBluetooth();
         phone.powerOff();
         
         // 노트북
