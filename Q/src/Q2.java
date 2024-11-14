@@ -27,7 +27,7 @@ interface Colorable {
 
 // 기본 도형 클래스
 abstract class Shape implements Calculatable, Colorable {
-    private String color;
+    protected String color;
 
     public Shape(String color) {
         this.color = color;
@@ -57,7 +57,7 @@ class Triangle extends Shape {
 
     @Override
     public double getArea() {
-        return base * height / 2;
+        return (base * height) / 2;
     }
 
     @Override
@@ -70,7 +70,7 @@ class Triangle extends Shape {
 // 원 클래스
 class Circle extends Shape implements Resizable {
     private double radius;
-    private static final double PI = Math.PI;
+    private static final double PI = 3.14159;
 
     public Circle(double radius, String color) {
         super(color);
@@ -79,7 +79,7 @@ class Circle extends Shape implements Resizable {
 
     @Override
     public void resize(double factor) {
-        this.radius = factor;
+        radius = radius*factor;
     }
 
     @Override
@@ -89,7 +89,7 @@ class Circle extends Shape implements Resizable {
 
     @Override
     public double getPerimeter() {
-        return 2 * radius;
+        return 2 * PI * radius;
     }
 }
 
@@ -104,7 +104,7 @@ class Square extends Shape implements Resizable {
 
     @Override
     public void resize(double factor) {
-        this.side = factor;
+        this.side = this.side * factor;
     }
 
     @Override
