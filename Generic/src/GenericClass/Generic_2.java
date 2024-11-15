@@ -10,7 +10,7 @@ class Goods {
     }
 }
 
-// 모든 클래스의 부모인 Objec를 이용하면 문제를 해결할 수 있음
+// 모든 클래스의 부모인 Object를 이용하면 문제를 해결할 수 있음
 public class Generic_2 {
     public static void main(String[] args) {
         Goods goods1 = new Goods();
@@ -23,7 +23,7 @@ public class Generic_2 {
         Pencil pencil = (Pencil)goods2.getObject(); // Pencil로 다운캐스팅
 
         // 실수로 Apple이 담겨있는 goods1 객체에서 Pencil을 꺼냄
-        // 하지만 컴파일 에러가 발생하지 않음. 이유는 ??
+        // 하지만 컴파일 에러가 발생하지않음. 이유는???
         // Object는 모든 클래스의 부모클래스로서 모든 타입의 객체 저장 가능
         // 자바의 특성상 Object는 약한 타입체크 방식으로 동작됨
         // (다른 참조형 타입들은 엄격한(=강한) 타입체크 사용)
