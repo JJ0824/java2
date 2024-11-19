@@ -2,8 +2,8 @@ package GenericClass;
 
 // 제네릭타입이 2개 이상인 경우 (갯수제한 없음)
 class KeyValue<K,V> {
-    private K key;
-    private V value;
+    private K key; // value를 설명해주는 값
+    private V value; // key와 연관 없으면 a, b라고만 표현해도 됨
     public K getKey() {
         return key;
     }
