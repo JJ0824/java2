@@ -1,0 +1,50 @@
+SQL (Structured Query Language)
+- 관계형 데이터베이스와 대화하기 위한 언어
+- DB에 원하는 작업을 지시하거나, 데이터를 요청하는 데 사용됨
+
+1. 기본적인 역할 (CRUD)
+- 데이터 조회하기
+"학생 테이블에서 모든 학생 이름을 보여주세요"
+select name from students;
+
+- 데이터 추가하기
+"새로운 학생 정보를 보내줄테니 저장해주세요"
+insert into students (name, age) values ('Alice', 20);
+
+- 데이터 수정하기
+"학생의 나이를 21살로 바꿔주세요"
+update students set age = 21 where name = 'Alice';
+
+- 데이터 삭제하기
+"졸업한 학생 데이터를 삭제해주세요"
+delete from students where name = 'Alice';
+
+2. SQL의 특징
+- 쉽고 직관적임 
+- 거의 모든 관계형 데이터베이스의 표준 언어
+- 데이터를 다루는 다양한 기능 제공
+
+3. SQL문의 종류
+1) DDL (Data Definition Language) 데이터 정의어
+: 데이터베이스의 구조를 정의하거나 변경하는데 사용
+- create : 테이블, 인덱스, 뷰를 생성함
+- alter : 테이블 구조를 변경함
+- drop : 테이블, 인덱스, 뷰등을 삭제함
+- truncate : 테이블의 모든 데이터를 삭제하지만 구조는 유지
+
+2) DML (Data Manipulation Language) 데이터 조작어
+: 데이터 행(row)을 조작, 삽입, 업데이트, 삭제하는데 사용됨
+- select : 데이터를 조회
+- insert : 데이터를 삽입
+- update : 데이터를 수정
+- delete : 데이터를 삭제
+
+3) DCL (Data Control Language) 데이터 제어어
+: 데이터에 대한 액세스를 제어하고 권한을 부여 또는 취소하는데 사용됨
+- grant : 사용자의 권한 부여
+- revoke : 사용자의 권한 취소
+
+4) TCL (Transaction Control Language) 트랜잭션 제어어
+: 트랜잭션의 수행 결과를 저장하거나 또는 취소하는데 사용됨
+- commit : 트랜잭션 작업 내용을 데이터베이스에 영구 저장
+- rollback : 트랜잭션 작업 내용을 취소

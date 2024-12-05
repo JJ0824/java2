@@ -39,7 +39,7 @@ where 담당자직위 <> '대표 이사';
 select * from 고객
 where 담당자직위 != '대표 이사';
 
--- NULL 개념 (알수없는 값 unknown value) 
+-- NULL 개념 (알 수 없는 값 unknown value) 
 -- 데이터베이스에서 NULL은 특별한 값을 취급함. 반드시 NULL을 입력해야함
 -- '' 빈 문자열은 NULL이 아님
 select * from 고객
