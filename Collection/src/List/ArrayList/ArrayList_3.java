@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 // ArrayList의 사용법 (메서드사용법)
-public class List_3 {
+public class ArrayList_3 {
     public static void main(String[] args) {
         List<Integer> aList1 = new ArrayList<>();
         // #1. add (요소 추가, 맨 뒤에 추가)

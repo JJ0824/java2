@@ -1,5 +1,3 @@
-package sec01_selectcontrolstatement.EX01_IfControlStatement;
-
 import java.util.Scanner;
 
 public class IfElse {
@@ -24,13 +22,11 @@ public class IfElse {
         }else {
             System.out.println("나머지");
         }
-
-        scanner.nextLine(); // Scanner가 가지고 있는 "엔터" 버퍼를 비워줘야 함
+        scanner.nextLine(); // Scanner가 가지고 있는 "엔터" 버퍼를 비워줘야 함.
 
         System.out.println("이름을 입력해주세요: ");
         String userName = scanner.nextLine();
         System.out.println(userName);
         System.out.println("끝");
-
     }
 }
