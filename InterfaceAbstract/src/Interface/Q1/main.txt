@@ -1,3 +1,5 @@
+package Interface.Q1;
+
 /* 문제 설명:
  * 1. ___1___ 에는 이 인터페이스가 나타내는 특성에 맞는 인터페이스 이름을 작성하세요.
  * 2. ___2___ 에는 Bird 클래스가 구현해야 하는 적절한 반환 타입을 작성하세요.
@@ -89,7 +91,7 @@ class Fish extends Animal implements Movable {
     }
 }
 
-public class Q1 {
+public class Main {
     public static void main(String[] args) {
         Bird sparrow = new Bird("참새", 1, 40);
         Fish goldfish = new Fish("금붕어", 2, 5);

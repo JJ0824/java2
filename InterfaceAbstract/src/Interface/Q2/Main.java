@@ -1,3 +1,5 @@
+package Interface.Q2;
+
 /* 문제 설명:
  * 1. ___1___ 에는 인터페이스 메소드의 적절한 반환 타입을 작성하세요. (넓이는 소수점도 처리해야 합니다)
  * 2. ___2___ 에는 Shape 클래스의 적절한 접근 제어자를 작성하세요. (하위 클래스에서만 접근 가능)
@@ -118,7 +120,7 @@ class Square extends Shape implements Resizable {
     }
 }
 
-public class Q2 {
+public class Main {
     public static void main(String[] args) {
         Circle circle = new Circle(5.0, "Red");
         Triangle triangle = new Triangle(4.0, 3.0, "Blue");
