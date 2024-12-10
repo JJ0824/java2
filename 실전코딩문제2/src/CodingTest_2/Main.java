@@ -20,6 +20,7 @@ public class Main {
         // 책 대출 / 접근
         library.lendBook("1984");
         library.lendBook("Digital Minimalism");
+
         library.lendBook("Digital Minimalism");
         library.lendBook("The Great Gatsby");
         library.lendBook("The Great Gatsby");
