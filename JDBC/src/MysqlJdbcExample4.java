@@ -17,23 +17,24 @@ public class MysqlJdbcExample4 {
                 + "where 재고 < ? "
                 + "group by 제품.제품번호, 제품명";
 
-        List<Map<String, Object>> pos= new ArrayList<>();
+        List<Map<String, Object>> productsWithStocks= new ArrayList<>();
 
         try(Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement pstmt = conn.prepareStatement(query)) {
                 pstmt.setInt(1, stock);
+
                 try(ResultSet rs = pstmt.executeQuery()) {
                     while (rs.next()) {
-                        Map<String, Object> po = new HashMap<>();
-                        po.put("제품번호", rs.getInt("제품번호"));
-                        po.put("제품명", rs.getString("제품명"));
-                        po.put("총주문건수", rs.getInt("총주문건수"));
+                        Map<String, Object> productsWithStock = new HashMap<>();
+                        productsWithStock.put("제품번호", rs.getInt("제품번호"));
+                        productsWithStock.put("제품명", rs.getString("제품명"));
+                        productsWithStock.put("총주문건수", rs.getInt("총주문건수"));
 
-                        pos.add(po);
+                        productsWithStocks.add(productsWithStock);
                     }
 
-                    for (Map<String, Object> po : pos) {
-                        System.out.println(po);
+                    for (Map<String, Object> productsWithStock : productsWithStocks) {
+                        System.out.println(productsWithStock);
                     }
                 }
             }catch (SQLException e) {
@@ -49,7 +50,8 @@ public class MysqlJdbcExample4 {
         String query = "select 사원번호, 이름, 직위 from 사원 "
                 + "where 사원번호 in (select 사원번호 from 주문 where 주문일 >= "
                 + "adddate(?, interval -? month))";
-        List<Map<String, Object>> eos = new ArrayList<>();
+
+        List<Map<String, Object>> employeesWithMonths = new ArrayList<>();
 
         try(Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -57,27 +59,28 @@ public class MysqlJdbcExample4 {
             pstmt.setInt(2, month);
             try(ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Map<String, Object> eo = new HashMap<>();
-                    eo.put("사원번호", rs.getString("사원번호"));
-                    eo.put("이름", rs.getString("이름"));
-                    eo.put("직위", rs.getString("직위"));
+                    Map<String, Object> employeeWithMonths = new HashMap<>();
+                    employeeWithMonths.put("사원번호", rs.getString("사원번호"));
+                    employeeWithMonths.put("이름", rs.getString("이름"));
+                    employeeWithMonths.put("직위", rs.getString("직위"));
 
-                    eos.add(eo);
+                    employeesWithMonths.add(employeeWithMonths);
                 }
             }
-            for (Map<String, Object> eo : eos) {
-                System.out.println(eo);
+            for (Map<String, Object> employeeWithMonths : employeesWithMonths) {
+                System.out.println(employeeWithMonths);
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     // #3. 매개변수로 도시를 전달하고 해당도시별 고객들에 대한 주문년도별 주문건수 조회
     public void getNumOfOrdersByCity(String city) {
         String query = "select year(주문.주문일) as 주문년도, count(*) as 주문건수 "
                 + "from 주문 inner join 고객 on 주문.고객번호 = 고객.고객번호 "
                 + "where 고객.도시 = ? group by year(주문.주문일) order by 주문년도";
+
         List<Map<String, Object>> ordersByCities = new ArrayList<>();
 
         try(Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
