@@ -4,24 +4,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MysqlJdbcExample {
-    // #1. 데이터베이스 커넥션 정보
+public class MysqlJdbcExample {// #1. 데이터베이스 커넥션 정보
     private static final String URL = "jdbc:mysql://localhost:3306/testdb";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
-    // #2. 원하는 정보를 조회하기 위한 메서드를 정의 : "모든 고객 정보를 조회"
+    // #2. 원하는 정보를 조회하기위한 메서드를 정의 :  "모든 고객정보를 조회"
     public List<Customer> getAllCustomers() {
         List<Customer> customers = new ArrayList<>();
         // SQL 쿼리 작성
-        String query = "select * from 고객"; // 테이블의 모든 데이터를 조회
+        String query = "select * from 고객";
 
         // 외부에 있는 데이터베이스 연결하는 과정은 반드시 예외처리를 해줘야 함
         // try~catch 문법을 사용
-        // try()를 실행하고 오류가 발생하면 catch구문 실행함
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+        // try()를 실행하고 만약 오류가 발생하면 catch구문 실행함
+        try (
+                Connection connection = DriverManager.getConnection(
+                        URL, USER, PASSWORD);
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query)) {
             System.out.println("데이터베이스 연결 성공");
             // 조회 결과가 resultSet에 담겨있음
             // resultSet으로부터 데이터를 꺼내서 Customer클래스의 인스턴스에 저장
@@ -41,7 +42,6 @@ public class MysqlJdbcExample {
 
                 customers.add(customer); // 리스트에 추가
             }
-
         } catch (SQLException e) {
             e.printStackTrace(); // 예외가 발생한 과정의 정보를 출력
         }
@@ -152,9 +152,9 @@ public class MysqlJdbcExample {
         repository.getEmployees_1();
         repository.getEmployees_2();
         repository.getCustomersNotOrder();
-//        List<Customer> customers = repository.getAllCustomers();
-//        for (Customer customer : customers) {
-//            System.out.println(customer);
-//        }
+        List<Customer> customers = repository.getAllCustomers();
+        for (Customer customer : customers) {
+            System.out.println(customer);
+        }
     }
 }
